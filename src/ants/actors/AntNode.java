@@ -74,7 +74,7 @@ public class AntNode extends WaypointNode {
         node.setQuantity(node.getQuantity() -1);
 
         /* on change d'image */
-        setIcon("/images/ant-bean.png");
+        setIcon("/resources/images/ant-bean.png");
     }
 
     public void dropFood() {
@@ -86,7 +86,9 @@ public class AntNode extends WaypointNode {
     public void onArrival() {
         for (FoodNode n : foodNodes) {
             /* si on est sur une cellule contenant de la nourriture */
-            if(distance(n) <= 1)
+            System.out.println("Ant : " + currentCell.toString());
+            System.out.println("FoodNode : " + n.getCurrentCell().toString());
+            if(currentCell.equals(n.getCurrentCell()))
                 takeFood(n);
         }
         antAlgorithm();

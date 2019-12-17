@@ -7,7 +7,6 @@ public class CellLocatedNode extends Node {
 
     protected Cell currentCell = null;
 
-
     public Cell getCurrentCell() {
         return currentCell;
     }
