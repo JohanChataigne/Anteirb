@@ -11,19 +11,9 @@ import java.util.Queue;
  * This type of Node can move over a sequence of destinations,
  * specified through the addDestination() method.
  */
-public class WaypointNode extends Node {
+public class WaypointNode extends CellLocatedNode {
 
-    protected Cell currentCell = null;
-
-    public Cell getCurrentCell() {
-        return currentCell;
-    }
-
-    public void setCurrentCell(Cell currentCell) {
-        this.currentCell = currentCell;
-    }
-
-    Queue<Point> destinations = new LinkedList<Point>();
+    Queue<Cell> destinations = new LinkedList<Cell>();
 
     double speed = 1;
 
@@ -40,14 +30,14 @@ public class WaypointNode extends Node {
                 onArrival();
             }
         } else
-            onArrival();
+        onArrival();
     }
 
     public void setSpeed(double speed) {
         this.speed = speed;
     }
 
-    public void addDestination(Point destination){
+    public void addDestination(Cell destination){
         destinations.add(destination);
     }
 

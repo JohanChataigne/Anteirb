@@ -36,9 +36,16 @@ public class QueenNode extends CellLocatedNode {
 
         foodStock--;
 
-        AntNode babyAnt = new AntNode();
+        AntNode babyAnt = new AntNode(this);
         babyAnt.setCurrentCell(getCurrentCell());
         getTopology().addNode(babyAnt);
     }
 
+    public int getFoodStock() {
+        return foodStock;
+    }
+
+    public void setFoodStock(int foodStock) {
+        this.foodStock = foodStock;
+    }
 }
