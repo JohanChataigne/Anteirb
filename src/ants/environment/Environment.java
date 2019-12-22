@@ -120,6 +120,10 @@ public class Environment {
         return getElement(locationRandom.nextInt(nbColumn-2)+1, locationRandom.nextInt(nbRow-2)+1);
     }
 
+    public Cell getRandomLocationDepth() {
+        return getElement(locationRandom.nextInt(nbColumn-2)+1, locationRandom.nextInt(nbRow-2)+1);
+    }
+
     public int getNbColumn() {
         return nbColumn;
     }

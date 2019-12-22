@@ -2,6 +2,7 @@ package ants.environment;
 
 import io.jbotsim.core.Point;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -14,10 +15,17 @@ public class Cell extends Point {
 
     Map<Integer, Cell> neighBor = new HashMap<>();
 
+    private double foodPheromoneIntensity;
+    private double queenPheromoneIntensity;
 
     public Cell(Point location){
         super(location);
+        //cost = new Random().nextInt((MAX_COST_VALUE - MIN_COST_VALUE)*(int)(location.y)) + (int)location.y;
         cost = new Random().nextInt(MAX_COST_VALUE - MIN_COST_VALUE+1) + MIN_COST_VALUE+1;
+
+        /* initialisation des pheromones */
+        foodPheromoneIntensity = 0;
+        queenPheromoneIntensity = 0;
     }
 
     public Cell getNeighBor(int index) {
@@ -27,13 +35,13 @@ public class Cell extends Point {
         neighBor.put(index, value);
     }
 
-    public static final int RIGHT = 0;
-    public static final int LEFT = 1;
-    public static final int TOP = 2;
-    public static final int BOTTOM = 3;
-    public static final int TOP_RIGHT = 4;
-    public static final int BOTTOM_RIGHT = 5;
-    public static final int BOTTOM_LEFT = 6;
+    public static final int TOP = 0;
+    public static final int TOP_RIGHT = 1;
+    public static final int RIGHT = 2;
+    public static final int BOTTOM_RIGHT = 3;
+    public static final int BOTTOM = 4;
+    public static final int BOTTOM_LEFT = 5;
+    public static final int LEFT = 6;
     public static final int TOP_LEFT = 7;
 
     public Cell getRightNeighbor() {
@@ -86,6 +94,15 @@ public class Cell extends Point {
         setNeighBor(BOTTOM_LEFT, neighbor);
     }
 
+    public ArrayList<Cell> getAllNeighbors() {
+        ArrayList<Cell> neighbors = new ArrayList<Cell>();
+        for(int i = 0; i < 8; i++) {
+            if(getNeighBor(i) != null)
+                neighbors.add(getNeighBor(i));
+        }
+        return neighbors;
+    }
+
     public int getCost() {
         return cost;
     }
@@ -97,5 +114,19 @@ public class Cell extends Point {
         cost--;
         if(cost < MIN_COST_VALUE)
             cost = MIN_COST_VALUE;
+    }
+
+    /* methodes sur les pheromones */
+    public void setFoodPheromoneIntensity(double value) {
+        foodPheromoneIntensity = value;
+    }
+    public double getFoodPheromoneIntensity() {
+        return foodPheromoneIntensity;
+    }
+    public double getQueenPheromoneIntensity() {
+        return queenPheromoneIntensity;
+    }
+    public void setQueenPheromoneIntensity(double value) {
+        queenPheromoneIntensity = value;
     }
 }

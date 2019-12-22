@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class FoodNode extends CellLocatedNode {
 
-    public static final int MAX_QUANTITY = 10;
+    public static final int MAX_QUANTITY = 20;
     public static final int MIN_QUANTITY = 10;
 
     /* temps de survie mini et maxi de la nourriture */

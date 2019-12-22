@@ -19,18 +19,20 @@ public class WaypointNode extends CellLocatedNode {
 
     @Override
     public void onClock() {
-        if ( ! destinations.isEmpty() ){
+        if(!destinations.isEmpty()){
             Point dest = destinations.peek();
-            if (distance(dest) > speed) {
+
+            if(distance(dest) > speed) {
                 setDirection(dest);
                 move(speed);
-            }else{
+            } else {
+                /* on est arrive a destination : on la retire de la queue */
                 setLocation(dest);
                 destinations.poll();
                 onArrival();
             }
         } else
-        onArrival();
+            onArrival();
     }
 
     public void setSpeed(double speed) {

@@ -31,8 +31,10 @@ public class QueenNode extends CellLocatedNode {
     }
 
     public void produceOffspring(){
-        if(foodStock <= 0)
+        if(foodStock <= 0) {
+            die();
             return;
+        }
 
         foodStock--;
 
