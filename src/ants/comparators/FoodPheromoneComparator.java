@@ -3,6 +3,7 @@ package ants.comparators;
 import ants.environment.Cell;
 import java.util.Comparator;
 
+/* classe permettant de comaprer deux cellules selon la quantité de pheromones de nourriture */
 public class FoodPheromoneComparator implements Comparator<Cell> {
 
     @Override
