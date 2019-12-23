@@ -15,7 +15,7 @@ abstract public class WaypointNode extends CellLocatedNode {
 
     Queue<Cell> destinations = new LinkedList<Cell>();
 
-    double speed = 10;
+    double speed = 8;
 
     @Override
     public void onClock() {
