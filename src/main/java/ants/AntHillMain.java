@@ -30,8 +30,8 @@ public class AntHillMain {
         environment = new Environment(tp, 30, 25);
 
         initializeQueen();
-        initializeFood(10);
-        //initializeRocks(10);
+        initializeFood(15);
+        initializeRocks(5);
 
         JViewer jv = new JViewer(tp);
         EnvironmentBackgroundPainter painter = new EnvironmentBackgroundPainter(tp, environment);
@@ -61,10 +61,18 @@ public class AntHillMain {
         queen.setLocation(queenCell);
 
         queenCell.setCost(Cell.MIN_COST_VALUE);
+        queenCell.setDug(true);
+
+        /*
         queenCell.getBottomNeighbor().setCost(Cell.MIN_COST_VALUE);
+        queenCell.getBottomNeighbor().setDug(true);
         queenCell.getRightNeighbor().setCost(Cell.MIN_COST_VALUE);
+        queenCell.getRightNeighbor().setDug(true);
         queenCell.getLeftNeighbor().setCost(Cell.MIN_COST_VALUE);
+        queenCell.getLeftNeighbor().setDug(true);
         queenCell.getTopNeighbor().setCost(Cell.MIN_COST_VALUE);
+        queenCell.getTopNeighbor().setDug(true);
+        */
 
         tp.addNode(queen);
 

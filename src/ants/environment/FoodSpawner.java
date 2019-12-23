@@ -20,15 +20,21 @@ public class FoodSpawner implements ClockListener{
 
     @Override
     public void onClock() {
-
         if (shouldSpawn())
             spawnRandomFood();
-
     }
 
     public void spawnRandomFood() {
         FoodNode n = new FoodNode();
-        Cell location = environment.getRandomLocation();
+
+        /* on créé une case random avec de la nourriture */
+        Cell location = environment.getRandomLocationDepth(0.8,8);
+        /* on accepte la nourriture que si la case n'est pas déjà creusée ou alors s'il y a deja de la nourriture ou une pierrre */
+        while(location.isFood() || location.isRock() || location.isDug())
+            location = environment.getRandomLocationDepth(0.8,8);
+
+        location.setFood(true);
+
         n.setLocation(location);
         n.setCurrentCell(location);
         tp.addNode(n);

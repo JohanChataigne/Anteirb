@@ -11,18 +11,19 @@ import java.util.Queue;
  * This type of Node can move over a sequence of destinations,
  * specified through the addDestination() method.
  */
-public class WaypointNode extends CellLocatedNode {
+abstract public class WaypointNode extends CellLocatedNode {
 
     Queue<Cell> destinations = new LinkedList<Cell>();
 
-    double speed = 1;
+    double speed = 10;
 
     @Override
     public void onClock() {
-        if(!destinations.isEmpty()){
+        if(!destinations.isEmpty()) {
             Point dest = destinations.peek();
 
-            if(distance(dest) > speed) {
+            /* si on est pas sur la cellule : on sy dirige */
+            if (distance(dest) > speed) {
                 setDirection(dest);
                 move(speed);
             } else {
@@ -31,17 +32,11 @@ public class WaypointNode extends CellLocatedNode {
                 destinations.poll();
                 onArrival();
             }
-        } else
-            onArrival();
+        }
+        onArrival();
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
+    abstract public void onArrival();
 
-    public void addDestination(Cell destination){
-        destinations.add(destination);
-    }
-
-    public void onArrival(){ }
+    public void addDestination(Cell destination){ destinations.add(destination);}
 }

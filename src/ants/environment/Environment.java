@@ -27,7 +27,6 @@ public class Environment {
         locationRandom = new Random();
 
         createEnvironment();
-
     }
 
     private void createEnvironment() {
@@ -120,8 +119,17 @@ public class Environment {
         return getElement(locationRandom.nextInt(nbColumn-2)+1, locationRandom.nextInt(nbRow-2)+1);
     }
 
-    public Cell getRandomLocationDepth() {
-        return getElement(locationRandom.nextInt(nbColumn-2)+1, locationRandom.nextInt(nbRow-2)+1);
+    /* renvoit une cellule aleatoire compte tenu de la profondeur */
+    public Cell getRandomLocationDepth(double height, int derivative) {
+        Random r = new Random();
+        double a = (nbRow - 2) * height;
+        int b = (int) Math.floor(a);
+        int rows = (int) Math.round(r.nextGaussian() * derivative) + b;
+        if (rows > nbRow - 2)
+            rows = nbRow - 2;
+        else if (rows < 1)
+            rows = 1;
+        return getElement(locationRandom.nextInt(nbColumn-2)+1, rows + 1);
     }
 
     public int getNbColumn() {
