@@ -28,12 +28,11 @@ public class QueenNode extends CellLocatedNode {
     }
 
     private boolean shouldProduceOffspring() {
-        /* FAIRE SPAWN PEU DE FOURMIS  ::::: */
+        /* FAIRE SPAWN PEU DE FOURMIS  :::::
         if(getTime() % 1000 == 0)
             return true;
-        return false;
-
-        //return new Random().nextDouble() < 0.01;
+        return false; */
+        return new Random().nextDouble() < 0.01;
     }
 
     public void produceOffspring(){
